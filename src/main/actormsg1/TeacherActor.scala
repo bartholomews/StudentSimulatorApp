@@ -25,8 +25,9 @@ class TeacherActor extends Actor {
       // Get a random Quote from the list and construct a response
       val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
 
-      println(quoteResponse)
-
+      // send a QuoteResponse to the ActorRef which triggered the receive() call
+      // (that is, the StudentActor)
+      sender!quoteResponse
   }
 
   /*
